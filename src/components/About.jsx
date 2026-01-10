@@ -45,42 +45,12 @@ export default function AboutSectionModern() {
           </p>
         </div>
 
-        {/* CONTENT GRID */}
-        <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-16 items-center">
-          {/* LEFT – FEATURES */}
-          <div className="space-y-6" data-aos="fade-right">
-            {[
-              {
-                title: "Certified MOT Testing",
-                desc: "MOT Class 4, 5 & 7 testing using modern approved equipment.",
-              },
-              {
-                title: "Advanced Diagnostics",
-                desc: "Accurate fault finding, engine tuning & wet belt services.",
-              },
-              {
-                title: "Customer-First Service",
-                desc: "Clear communication, honest advice, and fast turnaround.",
-              },
-            ].map((item, index) => (
-              <div
-                key={index}
-                className="p-6 rounded-md bg-white/5 border border-white/10 hover:border-[var(--accent)] transition"
-              >
-                <h4 className="text-white font-semibold mb-2">
-                  {item.title}
-                </h4>
-                <p className="text-sm text-[#94A3B8]">
-                  {item.desc}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          {/* RIGHT – IMAGE (FIXED WIDTH) */}
+        {/* CONTENT GRID - Swapped order: Image Left, Content Right */}
+        <div className="grid grid-cols-1 lg:grid-cols-[0.8fr_1.2fr] gap-16 items-center">
+          {/* LEFT – IMAGE (FIXED WIDTH) */}
           <div
-            className="relative w-full max-w-[520px] mx-auto lg:mx-0"
-            data-aos="fade-left"
+            className="relative w-full max-w-[520px] mx-auto lg:mx-0 order-2 lg:order-1"
+            data-aos="fade-right"
             data-aos-delay="200"
           >
             {/* IMAGE */}
@@ -112,6 +82,36 @@ export default function AboutSectionModern() {
                 Vehicles Tested
               </p>
             </div>
+          </div>
+
+          {/* RIGHT – FEATURES */}
+          <div className="space-y-6 order-1 lg:order-2" data-aos="fade-left">
+            {[
+              {
+                title: "Certified MOT Testing",
+                desc: "MOT Class 4, 5 & 7 testing using modern approved equipment.",
+              },
+              {
+                title: "Advanced Diagnostics",
+                desc: "Accurate fault finding, engine tuning & wet belt services.",
+              },
+              {
+                title: "Customer-First Service",
+                desc: "Clear communication, honest advice, and fast turnaround.",
+              },
+            ].map((item, index) => (
+              <div
+                key={index}
+                className="p-6 rounded-md bg-white/5 border border-white/10 hover:border-[var(--accent)] transition"
+              >
+                <h4 className="text-white font-semibold mb-2">
+                  {item.title}
+                </h4>
+                <p className="text-sm text-[#94A3B8]">
+                  {item.desc}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </div>

@@ -1,114 +1,131 @@
-"use client";
+import React, { useState } from 'react';
+import { ArrowUpRight } from 'lucide-react';
 
-import React, { useEffect } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
-import { FaCarSide, FaTools, FaLaptopCode, FaSnowflake, FaCogs } from "react-icons/fa";
+export default function DesignCards() {
+  const [hoveredCard, setHoveredCard] = useState(null);
 
-export default function ServicesDark() {
-  useEffect(() => {
-    AOS.init({
-      duration: 900,
-      easing: "ease-out-cubic",
-      once: true,
-    });
-  }, []);
-
-  const services = [
+  const cards = [
     {
-      title: "MOT Testing (Class 4, 5 & 7)",
-      desc: "Certified MOT testing for cars and LCVs, ensuring safety and compliance.",
-      icon: <FaCarSide />,
-      color: "bg-[#0B5ED7]/20",
-    },
-    {
-      title: "Servicing & Repairs",
-      desc: "Full vehicle servicing and repairs including brakes, suspension, and general maintenance.",
-      icon: <FaTools />,
-      color: "bg-[#D70C09]/20",
-    },
-    {
+      id: 1,
       title: "Engine Tuning",
-      desc: "Professional engine tuning and performance optimization for better efficiency and power.",
-      icon: <FaLaptopCode />,
-      color: "bg-[#11CDEF]/20",
+      description: "Professional engine tuning and performance optimization to enhance efficiency and power.",
+      colSpan: "md:col-span-1"
     },
     {
+      id: 2,
+      title: "Servicing & Repairs",
+      description: "Full vehicle servicing and repairs including brakes, suspension, and maintenance.",
+      colSpan: "md:col-span-2"
+    },
+    {
+      id: 3,
+      title: "MOT Testing (Class 4, 5 & 7)",
+      description: "Certified MOT testing for cars and LCVs, ensuring safety and compliance.",
+      colSpan: "md:col-span-2"
+    },
+    {
+      id: 4,
       title: "Air Con Re-Gas",
-      desc: "Complete air conditioning servicing and re-gas for optimal cooling performance.",
-      icon: <FaSnowflake />,
-      color: "bg-[#F7B500]/20",
+      description: "Complete air conditioning servicing and re-gas for optimal cooling performance.",
+      colSpan: "md:col-span-1"
     },
     {
+      id: 5,
       title: "Wet Belt Services",
-      desc: "Inspection and replacement of wet belts to ensure smooth operation of your engine.",
-      icon: <FaCogs />,
-      color: "bg-[#6F42C1]/20",
+      description: "Inspection and replacement of wet belts to ensure smooth engine operation.",
+      colSpan: "md:col-span-1"
     },
   ];
 
   return (
-    <section className="py-28 bg-gradient-to-b from-[#020617] to-[#020617]" id="services">
-      <div className="max-w-7xl mx-auto px-6 lg:px-16">
-        {/* Heading */}
-        <div className="text-center mb-16" data-aos="fade-down">
-          <h2 className="text-4xl md:text-5xl font-extrabold uppercase text-white mb-3">
-            Our <span className="text-[#D70C09]">Services</span>
-          </h2>
-          <div className="w-24 h-[3px] mx-auto bg-[#0B5ED7]" />
-          <p className="text-slate-400 mt-4 max-w-2xl mx-auto">
-            Delivering top-quality MOT testing, servicing, engine tuning, air con re-gas, and wet belt services with honesty and trust.
-          </p>
-        </div>
+    <div className="relative py-24 bg-gradient-to-b from-[#020617] to-[#020617] overflow-hidden"
+      id="services"
+    >
+      {/* BACKGROUND GLOWS */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-[var(--primary)]/10 blur-3xl rounded-full" />
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-[var(--accent)]/10 blur-3xl rounded-full" />
+      {/* Header Section */}
+      <div className="max-w-7xl mx-auto mb-8 sm:mb-12 lg:mb-16 px-4 sm:px-6 lg:px-8">
+        <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold mb-4 text-white sm:mb-6">
+          Transforming Imagination<br />
+          into <span className="text-[#0B5ED7]">Reality</span>
+        </h1>
+        <p className="text-gray-300 text-sm sm:text-base lg:text-lg max-w-2xl leading-relaxed">
+          Unlock the full potential of your creativity with our AI-powered design assistant.
+          Explore new dimensions of design, from futuristic visuals to timeless craftsmanship,
+          and witness how AI can turn your wildest ideas into stunning realities.
+        </p>
+      </div>
 
-        {/* Services Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => (
-            <div
-              key={index}
-              className="relative rounded-xl p-6 border border-slate-800 hover:border-slate-700 bg-[#0B0E18] transition-all hover:scale-105"
-              data-aos="fade-up"
-              data-aos-delay={index * 100}
-            >
-              {/* Icon */}
-              <div
-                className={`h-14 w-14 flex items-center justify-center rounded-lg text-2xl mb-4 ${service.color}`}
-                style={{ color: "var(--primary)" }}
-              >
-                {service.icon}
+      {/* Cards Grid */}
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 px-4 sm:px-6 lg:px-8">
+        {cards.map((card) => (
+          <div
+            key={card.id}
+            onMouseEnter={() => setHoveredCard(card.id)}
+            onMouseLeave={() => setHoveredCard(null)}
+            className={`
+              relative rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-10
+              transition-all duration-500 ease-out
+              cursor-pointer overflow-hidden
+              bg-white/5 border border-white/10
+              ${hoveredCard === card.id ? 'bg-[#084298] scale-[1.02] shadow-2xl shadow-[#084298]/30' : 'scale-100'}
+              ${card.colSpan}
+              group
+            `}
+            style={{
+              minHeight: '320px'
+            }}
+          >
+            {/* Arrow Icon */}
+            <div className="absolute top-6 sm:top-8 right-6 sm:right-8 z-20">
+              <div className={`
+                w-10 h-10 sm:w-12 sm:h-12 rounded-full 
+                bg-white/5 backdrop-blur-sm
+                flex items-center justify-center
+                transition-all duration-300
+                ${hoveredCard === card.id ? 'bg-white/5 scale-110 rotate-45' : 'scale-100 rotate-0'}
+              `}>
+                <ArrowUpRight className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+              </div>
+            </div>
+
+            {/* Content */}
+            <div className="relative z-10 flex flex-col justify-between h-full pr-12 sm:pr-16 lg:pr-20">
+              <div>
+                {/* Description - Shows on hover */}
+                <div className={`
+                  transition-all duration-500 ease-out
+                  ${hoveredCard === card.id
+                    ? 'opacity-100 translate-y-0 mb-6 sm:mb-8'
+                    : 'opacity-0 -translate-y-4 mb-0 h-0 overflow-hidden'
+                  }
+                `}>
+                  <p className="text-white/90 text-sm sm:text-base lg:text-lg leading-relaxed">
+                    {card.description}
+                  </p>
+                </div>
               </div>
 
-              {/* Content */}
-              <h3 className="text-xl font-semibold text-white mb-2">
-                {service.title}
-              </h3>
-              <p className="text-slate-400 text-sm">{service.desc}</p>
+              {/* Title - Always visible */}
+              <h2 className={`
+                text-2xl sm:text-3xl lg:text-4xl font-bold text-white
+                transition-all duration-500
+                ${hoveredCard === card.id ? 'mt-auto' : ''}
+              `}>
+                {card.title}
+              </h2>
             </div>
-          ))}
-        </div>
 
-        {/* Feature Banner */}
-        <div
-          className="mt-20 relative rounded-lg overflow-hidden border border-slate-800 p-12 text-center"
-          data-aos="fade-up"
-        >
-          <div className="absolute inset-0 bg-gradient-to-tr from-[#0B5ED7]/20 via-transparent to-[#D70C09]/20" />
-          <div className="relative z-10">
-            <h3 className="text-3xl font-bold text-white mb-4">
-              Trusted MOT & Vehicle Specialists
-            </h3>
-            <p className="text-slate-300 max-w-2xl mx-auto mb-8">
-              Modern diagnostic tools and experienced technicians ensure reliable MOT testing, repairs, and servicing with honest advice and fast turnaround times.
-            </p>
-            <ul className="space-y-2 text-sm text-slate-300">
-              <li>✔ DVSA Approved MOT Centre</li>
-              <li>✔ Modern Diagnostic Equipment</li>
-              <li>✔ Transparent Pricing</li>
-              <li>✔ Customer-First Service</li>
-            </ul>
+            {/* Gradient Overlay on Hover */}
+            <div className={`
+              absolute inset-0 bg-gradient-to-br from-[#084298] to-transparent
+              transition-opacity duration-500
+              ${hoveredCard === card.id ? 'opacity-100' : 'opacity-0'}
+            `} />
           </div>
-        </div>
+        ))}
       </div>
-    </section>
+    </div>
   );
 }
