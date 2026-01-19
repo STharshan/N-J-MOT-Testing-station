@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { FaCar, FaTools, FaSnowflake } from "react-icons/fa";
@@ -16,8 +16,19 @@ export default function HeroSection() {
     });
   }, []);
 
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const bookingUrl = "https://www.bookinmycar.co.uk/book_online/?key=17-987w54-soiubs0r780bu0erwgh43630B809f09f8g09bndorlfs-89048f&g=1&sl=Trchi";
+
+  const openBookingPopup = () => {
+    setIsPopupOpen(true);
+  };
+
+  const closeBookingPopup = () => {
+    setIsPopupOpen(false);
+  };
+
   return (
-    <section className="relative bg-black overflow-hidden py-28 md:py-36"id="home">
+    <section className="relative bg-black overflow-hidden py-28 md:py-36" id="home">
       {/* Video Background */}
       <video
         className="absolute inset-0 w-full h-full object-cover z-0"
@@ -62,13 +73,13 @@ export default function HeroSection() {
             data-aos="fade-up"
             data-aos-delay="400"
           >
-            <a
-              href="#contact"
+            <button
+              onClick={openBookingPopup}
               className="h-12 px-10 rounded-md text-white font-medium flex items-center justify-center transition"
               style={{ backgroundColor: "var(--primary)" }}
             >
-              Book MOT / Service
-            </a>
+              Book Now
+            </button>
 
             <a
               href={TEL_LINK}
@@ -152,6 +163,31 @@ export default function HeroSection() {
           </div>
         </div>
       </div>
+      {/* Booking Popup Modal */}
+      {isPopupOpen && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
+          <div className="relative w-full max-w-6xl h-[90vh] bg-white rounded-lg shadow-2xl overflow-hidden">
+            {/* Close Button */}
+            <button
+              onClick={closeBookingPopup}
+              aria-label="Close booking window"
+              className="absolute top-4 right-4 z-10 bg-red-500 hover:bg-red-600 text-white rounded-full p-2 transition-colors shadow-lg"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <path d="M18 6L6 18M6 6l12 12" />
+              </svg>
+            </button>
+
+            {/* Iframe */}
+            <iframe
+              src={bookingUrl}
+              title="Book Your Car"
+              className="w-full h-full border-0"
+              allow="payment"
+            />
+          </div>
+        </div>
+      )}
     </section>
   );
 }
