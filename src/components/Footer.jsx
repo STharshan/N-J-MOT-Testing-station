@@ -25,7 +25,7 @@ export default function Footer() {
             </h2>
 
             <p className="text-[#C0C0C0] mt-3 text-sm leading-relaxed">
-              Professional MOT testing, servicing, and engine tuning. 
+              Professional MOT testing, servicing, and engine tuning.
               Trusted for repairs, air con regass, wet belts, and MOT classes 4, 5 & 7.
             </p>
           </div>
@@ -39,13 +39,7 @@ export default function Footer() {
               <li className="hover:text-[#D70C09] transition">Engine Tuning</li>
               <li className="hover:text-[#D70C09] transition">MOT Class 4, 5 & 7</li>
               <li className="hover:text-[#D70C09] transition">Wet Belts</li>
-              <li>
-                <Link to="/privacy-policy" className="hover:text-[#D70C09]">Privacy Policy</Link>
-              </li>
-              <li>
-                <Link to="/terms-conditions" className="hover:text-[#D70C09]">Terms & Conditions</Link>
-              </li>
-            </ul>
+                     </ul>
           </div>
 
           {/* ================= CONTACT INFO ================= */}
@@ -62,7 +56,7 @@ export default function Footer() {
                   className="hover:text-[#D70C09] transition block leading-relaxed"
                 >
                   Windle, 41-43 Dentons Green Ln,
-                  <br/> Saint Helens WA10 2QF 
+                  <br /> Saint Helens WA10 2QF
                   <br />
                   United Kingdom
                 </a>
@@ -96,8 +90,26 @@ export default function Footer() {
         </div>
 
         {/* ================= POWERED BY ================= */}
-        <div className="mt-2 text-center text-[#868386] text-sm">
-          <p>
+        <div className="mt-2 flex flex-col sm:flex-row justify-center items-center gap-3 text-center font-semibold text-gray-400">
+          {/* Left: Terms & Privacy */}
+          <div className="flex gap-4 text-sm">
+            <Link
+              to="/terms-conditions"
+              className="text-gray-400 hover:text-[#D70C09] transition duration-300"
+            >
+              Terms & Conditions
+            </Link>
+            <span className="text-gray-500">|</span>
+            <Link
+              to="/privacy-policy"
+              className="text-gray-400 hover:text-[#D70C09] transition duration-300"
+            >
+              Privacy Policy
+            </Link>
+          </div>
+
+          {/* Center: Powered by Ansely (unchanged) */}
+          <p className="text-center font-semibold text-gray-400">
             Powered by{" "}
             <a
               href="https://www.ansely.co.uk/"
