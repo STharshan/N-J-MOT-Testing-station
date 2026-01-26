@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import emailjs from "@emailjs/browser";
 
 export default function ContactSection() {
-
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -10,13 +10,13 @@ export default function ContactSection() {
     message: "",
   });
 
+  const [status, setStatus] = useState(""); // "", "sending", "success", "error"
   const [error, setError] = useState("");
-
-  const whatsappNumber = "441744371225"; // UK number without +
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
     setError("");
+    if (status === "success" || status === "error") setStatus("");
   };
 
   const validateForm = () => {
@@ -42,31 +42,37 @@ export default function ContactSection() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     if (!validateForm()) return;
 
-    const whatsappMessage = `
-New Contact Message
+    setStatus("sending");
 
-Name: ${formData.name}
-Email: ${formData.email}
-Phone: ${formData.phone}
-Vehicle Registration: ${formData.vehicle || "N/A"}
+    const serviceID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
-Message:
-${formData.message}
-    `;
-
-    const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
-      whatsappMessage
-    )}`;
-
-    window.open(url, "_blank");
+    emailjs
+      .send(serviceID, templateID, formData, publicKey)
+      .then(() => {
+        setStatus("success");
+        setFormData({ name: "", email: "", phone: "", vehicle: "", message: "" });
+      })
+      .catch((err) => {
+        setStatus("error");
+        setError("Oops! Something went wrong. Please try again later.");
+        console.error(err);
+      });
   };
+
+  // Auto-hide success message after 5 seconds
+  useEffect(() => {
+    if (status === "success") {
+      const timer = setTimeout(() => setStatus(""), 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [status]);
 
   return (
     <section className="relative py-32 bg-[#0B1220] text-white overflow-hidden" id="contact">
-      {/* Decorative Glows */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-blue-600/20 blur-3xl rounded-full" />
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-red-600/20 blur-3xl rounded-full" />
 
@@ -75,10 +81,10 @@ ${formData.message}
         <div className="space-y-10" data-aos="fade-right">
           <div className="bg-[#0B1220] border border-white/10 p-8 rounded-2xl shadow-xl hover:shadow-red-500/30 transition">
             <h2 className="text-3xl font-bold text-[#0B5ED7] mb-4">Contact Info</h2>
-            <p className="text-[#C0C0C0] font-medium mb-1">Business: N&J MOT Testing station </p>
+            <p className="text-[#C0C0C0] font-medium mb-1">Business: N&J MOT Testing Station</p>
             <p className="text-[#C0C0C0] font-medium mb-1">Contact: Jen</p>
             <p className="text-[#C0C0C0] font-medium mb-1">
-              Phone: <a href="tel:+44 1744 371225" className="hover:text-[#D70C09]">+44 1744 371225</a>
+              Phone: <a href="tel:+441744371225" className="hover:text-[#D70C09]">+44 1744 371225</a>
             </p>
             <p className="text-[#C0C0C0] font-medium mb-1">
               Email: <a href="mailto:n_causer@yahoo.co.uk" className="hover:text-[#D70C09]">n_causer@yahoo.co.uk</a>
@@ -107,9 +113,10 @@ ${formData.message}
         <div className="bg-[#0B1220] border border-white/10 p-10 rounded-2xl shadow-xl space-y-6" data-aos="fade-left">
           <h2 className="text-3xl font-bold text-[#0B5ED7] mb-6">Send Us a Message</h2>
 
-          {error && (
-            <p className="text-red-400 text-sm font-medium">{error}</p>
-          )}
+          {status === "sending" && <p className="text-yellow-400 text-sm font-medium">Sending...</p>}
+          {status === "success" && <p className="text-green-400 text-sm font-medium">Message sent successfully!</p>}
+          {status === "error" && <p className="text-red-400 text-sm font-medium">{error}</p>}
+          {error && status !== "error" && <p className="text-red-400 text-sm font-medium">{error}</p>}
 
           <form className="space-y-4" onSubmit={handleSubmit}>
             <input
@@ -152,9 +159,16 @@ ${formData.message}
               onChange={handleChange}
               className="w-full bg-[#020617] border border-white/20 px-4 py-3 rounded text-white placeholder:text-[#94A3B8]"
             />
-            <button className="w-full py-3 bg-[#D70C09] hover:bg-[#0B5ED7] transition rounded-lg font-semibold text-lg">
-              Send Message
+            <button
+              type="submit"
+              disabled={status === "sending"}
+              className="w-full py-3 bg-[#D70C09] hover:bg-[#0B5ED7] transition rounded-lg font-semibold text-lg"
+            >
+              {status === "sending" ? "Sending..." : "Send Message"}
             </button>
+            <p className="text-xs text-center">
+              By submitting this form, you agree to us processing your details to respond to your enquiry. Your information is handled securely and in line with our Privacy Policy
+            </p>
           </form>
         </div>
       </div>

@@ -10,6 +10,7 @@ import GDPRBanner from "./components/GDPRBanner";
 import Service from "./page/Service";
 import AOS from "aos";
 import "aos/dist/aos.css"; // Import AOS CSS globally
+import ScrollToHash from "./components/ScrollHash";
 
 function App() {
   // Initialize AOS globally
@@ -29,6 +30,7 @@ function App() {
 
   return (
     <Router>
+      <ScrollToHash />
       <ScrollToTop />
       <Header />
       <Routes>
