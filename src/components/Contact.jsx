@@ -94,8 +94,8 @@ export default function ContactSection() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <p className="text-[#C0C0C0] font-medium">
-                Address: Windle, 41-43 Dentons Green Ln, Saint Helens WA10 2QE, United Kingdom
+              <p className="text-[#C0C0C0] font-medium ">
+                Address: <span className="hover:text-[#D70C09]"> Windle, 41-43 Dentons Green Ln, Saint Helens WA10 2QE, United Kingdom</span>
               </p>
             </a>
           </div>
