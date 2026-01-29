@@ -90,12 +90,12 @@ export default function ContactSection() {
               Email: <a href="mailto:njautocaremot@yahoo.com" className="hover:text-[#D70C09]">njautocaremot@yahoo.com</a>
             </p>
             <a
-              href="https://maps.app.goo.gl/2vwTEYasb2WVTAan7"
+              href="https://maps.app.goo.gl/7nFJASEnPddduwo48"
               target="_blank"
               rel="noopener noreferrer"
             >
               <p className="text-[#C0C0C0] font-medium ">
-                Address: <span className="hover:text-[#D70C09]"> Windle, 41-43 Dentons Green Ln, Saint Helens WA10 2QE, United Kingdom</span>
+                Address: <span className="hover:text-[#D70C09]">41 Dentons Green Ln, Windle, Saint Helens WA10 2QF, United Kingdom</span>
               </p>
             </a>
           </div>

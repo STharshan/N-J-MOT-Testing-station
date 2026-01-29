@@ -3,7 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 export default function Footer() {
-  const mapsUrl = "https://maps.app.goo.gl/qfMU2kft7Wx3mdDn7";
+  const mapsUrl = "https://maps.app.goo.gl/7nFJASEnPddduwo48";
 
   return (
     <footer className="bg-black border-t border-[#1C1C1C] py-12 text-white">
@@ -56,7 +56,7 @@ export default function Footer() {
                   rel="noopener noreferrer"
                   className="hover:text-[#D70C09] transition block leading-relaxed"
                 >
-                  Windle, 41-43 Dentons Green Ln,
+                  41 Dentons Green Ln, Windle,
                   <br /> Saint Helens WA10 2QF
                   <br />
                   United Kingdom

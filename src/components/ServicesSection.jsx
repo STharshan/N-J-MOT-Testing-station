@@ -42,15 +42,17 @@ export default function DesignCards() {
       {/* Header Section */}
       <div className="max-w-7xl mx-auto mb-8 sm:mb-12 lg:mb-16 px-4 sm:px-6 lg:px-8">
         <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold mb-4 text-white sm:mb-6">
-          Transforming Imagination<br />
-          into <span className="text-[#0B5ED7]">Reality</span>
+          Reliable Vehicle Care<br />
+          You Can <span className="text-[#0B5ED7]">Trust</span>
         </h1>
+
         <p className="text-gray-300 text-sm sm:text-base lg:text-lg max-w-2xl leading-relaxed">
-          Unlock the full potential of your creativity with our AI-powered design assistant.
-          Explore new dimensions of design, from futuristic visuals to timeless craftsmanship,
-          and witness how AI can turn your wildest ideas into stunning realities.
+          From professional engine tuning and MOT testing to full servicing and wet belt
+          replacements, we deliver expert automotive solutions designed to keep your
+          vehicle safe, efficient, and road-ready.
         </p>
       </div>
+
 
       {/* Cards Grid */}
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 px-4 sm:px-6 lg:px-8">
@@ -74,7 +76,7 @@ export default function DesignCards() {
             }}
           >
             {/* Arrow Icon */}
-            <Link 
+            <Link
               to="/service"
               className="absolute top-6 sm:top-8 right-6 sm:right-8 z-20">
               <div className={`
