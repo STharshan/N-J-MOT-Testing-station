@@ -25,9 +25,9 @@ export default function Header() {
 
   return (
     <>
-      <header className="fixed top-0 w-full bg-black/90 backdrop-blur-sm z-50 border-b border-gray-800">
+      <header className="fixed top-0 w-full bg-black backdrop-blur-sm z-50 border-b border-gray-800">
         <div className="mx-auto max-w-7xl px-4 lg:px-8">
-          <div className="flex items-center justify-between h-16">
+          <div className="flex items-center justify-between h-20">
 
             {/* Logo */}
             <div className="flex items-center">
@@ -35,7 +35,7 @@ export default function Header() {
                 src="/logo.png"
                 loading="lazy"
                 alt="Broadway"
-                className="rounded-full w-full h-14 lg:w-full lg:h-16 flex-shrink-0"
+                className="w-20 h-15 flex-shrink-0"
               />
             </div>
 

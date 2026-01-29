@@ -6,7 +6,7 @@ export default function Footer() {
   const mapsUrl = "https://maps.app.goo.gl/qfMU2kft7Wx3mdDn7";
 
   return (
-    <footer className="bg-[#000000] border-t border-[#1C1C1C] py-12 text-white">
+    <footer className="bg-black border-t border-[#1C1C1C] py-12 text-white">
       <div className="container mx-auto px-4 md:px-12">
 
         <div className="grid md:grid-cols-3 gap-8">
@@ -18,7 +18,7 @@ export default function Footer() {
               src="/logo.png"
               loading="lazy"
               alt="N&J MOT Testing station  Logo"
-              className="h-12 w-auto mb-4"
+              className="w-20 h-15 mb-4"
             />
 
             <h2 className="text-2xl font-bold brand-gradient">
@@ -74,10 +74,10 @@ export default function Footer() {
 
               <li>
                 <a
-                  href="mailto:n_causer@yahoo.co.uk"
+                  href="mailto:njautocaremot@yahoo.com"
                   className="hover:text-[#D70C09] transition break-all"
                 >
-                  n_causer@yahoo.co.uk
+                  njautocaremot@yahoo.com
                 </a>
               </li>
             </ul>

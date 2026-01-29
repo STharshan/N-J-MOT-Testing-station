@@ -87,7 +87,7 @@ export default function ContactSection() {
               Phone: <a href="tel:+441744371225" className="hover:text-[#D70C09]">+44 1744 371225</a>
             </p>
             <p className="text-[#C0C0C0] font-medium mb-1">
-              Email: <a href="mailto:n_causer@yahoo.co.uk" className="hover:text-[#D70C09]">n_causer@yahoo.co.uk</a>
+              Email: <a href="mailto:njautocaremot@yahoo.com" className="hover:text-[#D70C09]">njautocaremot@yahoo.com</a>
             </p>
             <a
               href="https://maps.app.goo.gl/2vwTEYasb2WVTAan7"
