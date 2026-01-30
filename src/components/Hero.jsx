@@ -1,6 +1,7 @@
 
 import React, { useState } from "react";
-import { FaCar, FaTools, FaSnowflake } from "react-icons/fa";
+import { FaCar, FaTools, } from "react-icons/fa";
+import { PiEngineDuotone } from "react-icons/pi";
 
 export default function HeroSection() {
   const PHONE = "+44 1744 371225";
@@ -55,7 +56,7 @@ export default function HeroSection() {
             data-aos-delay="200"
           >
             N&J MOT Testing station  offers MOT Class 4 testing, vehicle servicing,
-            repairs, air conditioning re-gas, engine tuning and wet belt
+            repairs, engine tuning and wet belt
             services.
           </p>
 
@@ -143,13 +144,13 @@ export default function HeroSection() {
                   color: "var(--primary)",
                 }}
               >
-                <FaSnowflake />
+                <PiEngineDuotone />
               </div>
               <h3 className="text-lg font-semibold text-white mb-2">
-                Air Con Re-Gas
+                Engine Tuning
               </h3>
               <p className="text-sm text-gray-300">
-                Professional A/C servicing for all vehicle types.
+                Performance tuning for power and efficiency.
               </p>
             </div>
           </div>
